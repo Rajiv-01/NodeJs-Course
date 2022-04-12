@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
+
+const blogRoutes = require('./routes/blogRoutes');
 
 const dbUri =
 	'mongodb+srv://Rajiv_01:Aj7HfSiujyDCf0Q8@cluster1.f0yae.mongodb.net/node-tuts?retryWrites=true&w=majority';
@@ -21,61 +22,24 @@ app.set('view engine', 'ejs');
 
 // static files
 app.use(express.static('public'));
-
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-//mongoose and mongo sandbos routes
-app.get('/add-blog', (req, res) => {
-	const blog = new Blog({
-		title: 'Test Blog',
-		snippet: 'Test blog snippet',
-		body: 'Test blog body',
-	});
-	blog.save().then((result) => {
-		res.send(result);
-	});
-});
-
-app.get('/all-blogs', (req, res) => {
-	Blog.find().then((blogs) => {
-		res.send(blogs);
-	});
-});
-
 app.get('/', (req, res) => {
-	// res.send('<h1>Hello Express!</h1>');
-	// res.sendFile('./views/index.html', { root: __dirname });
-	const blogs = [
-		{
-			title: 'Yoshi finds eggs',
-			snippet:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quaerat!',
-		},
-		{
-			title: 'Mario finds stars',
-			snippet:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quaerat!',
-		},
-		{
-			title: 'Luigi finds clouds',
-			snippet:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quaerat!',
-		},
-	];
-	res.render('index', { title: 'Home', blogs });
+	res.redirect('/blogs');
 });
 
 app.get('/about', (req, res) => {
 	// res.send('<h1>About Page</h1>');
 	// res.sendFile('./views/about.html', { root: __dirname });
-	res.render('about');
+	res.render('about', { title: 'About' });
 });
 
-//redirects
-app.get('/blogs/create', (req, res) => {
-	res.render('create');
+app.get('/create', (req, res) => {
+	res.render('create', { title: 'Create' });
 });
 
+app.use(blogRoutes);
 //404 page should get at the end of the file
 app.use((req, res) => {
 	res.status(404).render('404');

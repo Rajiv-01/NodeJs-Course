@@ -10,7 +10,6 @@ p,
 h1,
 h2,
 h3,
-a,
 ul {
 	margin: 0;
 	padding: 0;
@@ -60,10 +59,19 @@ h3 {
 	margin-left: 20px;
 }
 
-/* index styles */
-
 /* details styles */
 
+.delete {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+.delete:hover {
+	cursor: pointer;
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+}
 /* create styles */
 .create-blog form {
 	max-width: 400px;
@@ -91,4 +99,29 @@ textarea {
 	border: 0;
 	font-size: 1.2em;
 	cursor: pointer;
+}
+
+.blog {
+	display: flex;
+
+	justify-content: space-between;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+.details {
+	display: block;
+	position: relative;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+.details .content {
+	margin: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: Crimson;
 }
