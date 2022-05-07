@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Logo from './Logo';
 
 const NavbarContainer = styled.div`
 	min.height = 50px;
@@ -16,7 +17,12 @@ const NavbarContainer = styled.div`
     justify-between
     `}
 `;
+
 const Navbar = () => {
-	return <NavbarContainer>Navbar</NavbarContainer>;
+	return (
+		<NavbarContainer>
+			<Logo />
+		</NavbarContainer>
+	);
 };
 export default Navbar;

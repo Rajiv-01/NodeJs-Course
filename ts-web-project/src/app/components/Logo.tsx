@@ -18,9 +18,23 @@ const LogoText = styled.div`
     m-1
     `}
 `;
-
+const Image = styled.div`
+	width: auto;
+	${tw` h-6 md:h-9 `}
+	img {
+		width: auto;
+		height: 100%;
+	}
+`;
 const Logo = () => {
-	return <LogoContainer>Logo</LogoContainer>;
+	return (
+		<LogoContainer>
+			<Image>
+				<img src={CarLogoImg} alt='Car Logo' />
+			</Image>
+			<LogoText>Your Car</LogoText>
+		</LogoContainer>
+	);
 };
 
 export default Logo;
