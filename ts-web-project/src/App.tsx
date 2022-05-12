@@ -1,25 +1,24 @@
 import React from 'react';
-import tw from 'twin.macro';
 import styled from 'styled-components';
-import Homepage from './app/containers/HomePage';
-import Navbar from './app/components/Navbar';
+import tw from 'twin.macro';
+import './App.css';
+import HomePage from './app/containers/HomePage/index';
 
 const AppContainer = styled.div`
 	${tw`
-    flex 
-    flex-col  
-    w-full 
+    w-full
     h-full
-    `}
+    flex
+    flex-col
+  `};
 `;
 
-const App = () => {
+function App() {
 	return (
 		<AppContainer>
-			<Navbar />
-			<Homepage />
+			<HomePage />
 		</AppContainer>
 	);
-};
+}
 
 export default App;
