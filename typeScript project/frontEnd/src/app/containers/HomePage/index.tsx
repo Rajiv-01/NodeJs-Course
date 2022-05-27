@@ -4,7 +4,9 @@ import tw from 'twin.macro';
 import { Marginer } from '../../components/marginer';
 import { BookCard } from '../../components/bookCard';
 import { BookingSteps } from './bookingSteps';
+import { Footer } from '../../components/footer';
 import AboutUs from './aboutus';
+import TopCars from './topcars';
 import Navbar from '../../components/navbar';
 import { TopSection } from './topSection';
 const PageContainer = styled.div`
@@ -28,6 +30,9 @@ const HomePage = () => {
 			<BookingSteps />
 			<Marginer direction='vertical' margin='8em' />
 			<AboutUs />
+			<Marginer direction='vertical' margin='8em' />
+			<TopCars />
+			<Footer />
 		</PageContainer>
 	);
 };
